@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 
-const {addComment, getCommentsByVideoId} = require('../controllers/comment');
+const {postComment, getCommentsByVideoId} = require('../controllers/comment');
 
 
-router.post('/add', addComment);
+router.post('/:videoId', postComment);
 router.get('/:videoId', getCommentsByVideoId);
 
 module.exports = router;
