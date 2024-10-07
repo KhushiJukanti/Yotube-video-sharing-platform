@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #030303;
 }
 
 .App-logo {
@@ -14,25 +15,130 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #030303;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(7, 7, 7);
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.app__body {
+  display: flex;
 }
+
+.sidebar {
+  width: 250px;
+}
+
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+
+.sidebar {
+  height: 100vh;
+  background-color: #050505;
+  padding-top: 20px;
+}
+.sidebar .list-group-item {
+  font-size: 16px;
+  cursor: pointer;
+}
+.sidebar .list-group-item:hover {
+  background-color: #050505;
+}
+
+
+
+.card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+
+
+.video-player {
+  margin-left: 250px;
+}
+
+
+
+
+
+
+/* App.css
+
+body {
+  background-color: #181818;
+  color: white;
+}
+
+.navbar {
+  background-color: #202020;
+  padding: 10px;
+}
+
+.navbar-brand img {
+  height: 30px;
+}
+
+.form-control {
+  background-color: #303030;
+  color: white;
+  border: none;
+}
+
+.form-control::placeholder {
+  color: #b3b3b3;
+}
+
+.btn-outline-success {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-outline-success:hover {
+  background-color: #fff;
+  color: #202020;
+}
+
+.sidebar {
+  background-color: #202020;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar .list-group-item {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.sidebar .list-group-item:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.card {
+  background-color: #303030;
+  border: none;
+}
+
+.card img {
+  height: auto;
+} */
