@@ -1,12 +1,19 @@
 const Comment = require('../models/comment');
 
 // Post a comment
-const addComment = async (req, res) => {
-  const { videoId, username, text } = req.body;
+const postComment = async (req, res) => {
+  try {
+    const comment = new Comment({ videoId: req.params.id, text: req.body.text });
+    await comment.save();
 
-  const comment = new Comment({ videoId, username, text });
-  await comment.save();
-  res.json(comment);
+    // Emit the new comment via Socket.IO
+    const io = req.app.get('socketio');
+    io.emit('new_comment', comment);
+
+    res.status(201).json(comment);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to post comment', error: error.message });
+  }
 };
 
 // Get comments by videoId
@@ -16,7 +23,7 @@ const getCommentsByVideoId = async (req, res) => {
 };
 
 
-module.exports = {addComment, getCommentsByVideoId}
+module.exports = {postComment, getCommentsByVideoId}
 
 
 
