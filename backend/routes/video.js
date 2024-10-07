@@ -1,7 +1,8 @@
 // videoRoutes.js
 const express = require('express');
-const {uploadVideo, getVideos, getVideoById} = require('../controllers/video');
+const videoControllers = require('../controllers/video');
 const multer = require('multer');
+const router = express.Router();
 
 // Setup multer for file upload
 const storage = multer.diskStorage({
@@ -15,11 +16,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-const router = express.Router();
+
 
 // API routes
-router.post('/upload', upload.single('video'), uploadVideo); // Upload a video
-router.get('/', getVideos); // Get all videos
-router.get('/:id', getVideoById); // Get a single video by ID
+router.post('/upload', upload.single('video'), videoControllers.uploadVideo); // Upload a video
+router.get('/', videoControllers.getVideos); 
+router.get('/:id', videoControllers.getVideoById);
+router.patch('/:id/like', videoControllers.likeVideo);
+router.patch('/:id/dislike', videoControllers.dislikeVideo);
 
 module.exports = router;
