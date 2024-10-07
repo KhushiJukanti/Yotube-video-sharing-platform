@@ -33,6 +33,32 @@ const getVideos = async (req, res) => {
   }
 };
 
+// Like a video
+const likeVideo = async (req, res) => {
+  try {
+    const video = await Video.findByIdAndUpdate(req.params.id, { $inc: { likes: 1 } }, { new: true });
+    if (!video) {
+      return res.status(404).json({ message: 'Video not found' });
+    }
+    res.status(200).json(video);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to like video', error: error.message });
+  }
+};
+
+// Dislike a video
+const dislikeVideo = async (req, res) => {
+  try {
+    const video = await Video.findByIdAndUpdate(req.params.id, { $inc: { dislikes: 1 } }, { new: true });
+    if (!video) {
+      return res.status(404).json({ message: 'Video not found' });
+    }
+    res.status(200).json(video);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to dislike video', error: error.message });
+  }
+};
+
 // Get a video by ID and serve the video file
 const getVideoById = async (req, res) => {
   try {
@@ -51,4 +77,4 @@ const getVideoById = async (req, res) => {
   }
 };
 
-module.exports = { uploadVideo, getVideos, getVideoById };
+module.exports = { uploadVideo, getVideos, getVideoById, likeVideo, dislikeVideo};
