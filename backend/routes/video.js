@@ -22,7 +22,7 @@ const upload = multer({ storage });
 router.post('/upload', upload.single('video'), videoControllers.uploadVideo); // Upload a video
 router.get('/', videoControllers.getVideos); 
 router.get('/:id', videoControllers.getVideoById);
-router.patch('/:id/like', videoControllers.likeVideo);
-router.patch('/:id/dislike', videoControllers.dislikeVideo);
+router.post('/:id/like', videoControllers.likeVideo);
+router.post('/:id/dislike', videoControllers.dislikeVideo);
 
 module.exports = router;
