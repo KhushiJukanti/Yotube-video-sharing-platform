@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getComments, addComment } from '../API-Services/Api';
+import { getComments, addComment } from './Api';
 
 const CommentSection = ({ videoId }) => {
   const [comments, setComments] = useState([]);
