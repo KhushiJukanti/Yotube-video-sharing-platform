@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-import VideoGrid from './components/VideoGrid';
+import VideoGrid from './components/VideoGrid/VideoGrid';
 import VideoPlayer from './components/VideoPlayer';
-import { getVideos } from './API-Services/Api';
-// import './App.css';
+import { getVideos } from './components/Api';
 import SideNavbar from './components/Sidebar/Sidebar';
+import './App.css'; // Add this line for external CSS
 
 function App() {
   const [videos, setVideos] = useState([]);
+  const [sideNavbar, setSideNavbar] = useState(false);
 
   // Fetch videos from the backend API
   const fetchVideos = async () => {
@@ -19,8 +20,6 @@ function App() {
       console.error("Failed to fetch videos:", error);
     }
   };
-
-  const [sideNavbar, setSideNavbar] = useState(false);
 
   // Function to toggle the sidebar
   const toggleSideNavbar = () => {
@@ -33,12 +32,15 @@ function App() {
 
   return (
     <Router>
-      <div className="app" style={{backgroundColor :'black', height:'100vh'}}>
+      <div className={`app ${sideNavbar ? 'sidebar-open' : ''}`} style={{ backgroundColor: 'black' }}>
         <Navbar setSideNavbarFunc={toggleSideNavbar} sideNavbar={sideNavbar} />
 
         <div className="d-flex">
+          {/* Sidebar */}
           <SideNavbar sideNavbar={sideNavbar} />
-          <div className="main-content flex-grow-1">
+
+          {/* Main Content */}
+          <div className="main-content flex-grow-1 mt-4">
             <Routes>
               <Route path="/" element={<VideoGrid videos={videos} />} />
               <Route path="/video/:id" element={<VideoPlayer />} />
