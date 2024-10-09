@@ -1,0 +1,21 @@
+
+
+
+  .custom-card {
+    height: auto;
+    border: none !important; /* Decrease overall card height */
+  }
+  
+  .custom-img {
+    height: 200px; /* Increase image height by 10 to 15 pixels */
+    object-fit: cover; /* Ensure the image covers the area properly */
+  }
+  
+  .card-body {
+    height: auto; /* Ensure card body height adjusts to content */
+    background-color: black; /* Set card background color to black */
+
+  }
+  
+  
+  
