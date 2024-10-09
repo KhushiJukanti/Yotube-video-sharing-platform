@@ -7,9 +7,8 @@
     user-select: none;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
+body {
+    margin: 0; /* Space for fixed navbar */
     overflow-x: hidden;
 }
 
@@ -21,10 +20,11 @@ body, html {
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    position: fixed; /* Keep the navbar fixed */
     top: 0;
-    position: fixed;
-    background-color: black;
-    z-index: 10;
+    left: 0; /* Ensure it's aligned to the left */
+    background-color: black; /* Background color */
+    z-index: 10; /* Ensure it sits above other content */
 }
 
 .navbar-left {

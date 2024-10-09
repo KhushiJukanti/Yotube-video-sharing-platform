@@ -65,22 +65,21 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
   }, []);
 
   return (
-    <div className='navbar'>
-      <div className="navbar-left">
-        {/* The hamburger menu icon that toggles the sidebar */}
+    <div className='navbar fixed-top bg-dark mb-3'>
+      <div className="navbar-left d-flex mb-2 align-items-center">
         <div className="navbarHamberger" onClick={setSideNavbarFunc}>
           <MenuIcon sx={{ color: "white" }} />
         </div>
 
-        <Link to={'/'} className="navbar_youtubeImg">
+        <Link to={'/'} className="navbar_youtubeImg mt-1 d-flex align-items-center text-white text-decoration-none">
           <YouTubeIcon sx={{ fontSize: "34px" }} className='navbar_youtubeImage' />
           <div className='navbar_utubeTitle'>YouTube</div>
         </Link>
       </div>
 
-      <div className="navbar-middle">
-        <div className="navbar_search">
-          <input type="text" placeholder="Search" />
+      <div className="navbar-middle mb-3 d-flex align-items-center">
+        <div className="navbar_search d-flex">
+          <input className="form-control" type="text" placeholder="Search" />
           <SearchIcon sx={{ color: "white", cursor: "pointer" }} />
         </div>
         <div className="navbar_mike">
@@ -88,7 +87,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
         </div>
       </div>
 
-      <div className="navbar-right">
+      <div className="navbar-right mb-2 d-flex align-items-center">
         <Link to={'/763/upload'}>
           <VideoCallIcon sx={{ fontSize: "30px", cursor: "pointer", color: "white" }} />
         </Link>
